@@ -20,6 +20,9 @@ export default function Nav() {
                             <NavLink to={'/app/subscription'} className="nav-link">Billing</NavLink>
                         </li>
                         <li className="nav-item">
+                            <NavLink to={'/app/date'} className="nav-link">Date Picker</NavLink>
+                        </li>
+                        <li className="nav-item">
                             <NavLink to={'/app/price-rules'} className="nav-link ">Price Rules</NavLink>
                         </li>
                         <li className="nav-item">

@@ -198,6 +198,18 @@ function DateRangePicker() {
             },
         },
         {
+            title: "Last Year",
+            alias: "lastyear",
+            period: {
+                since: new Date(
+                    new Date(new Date().getFullYear() - 1, 0, 1)
+                ),
+                until: new Date(
+                    new Date(new Date().getFullYear() - 1, 11, 31)
+                ),
+            },
+        },
+        {
             title: "Custom range",
             alias: "custom",
             period: {
@@ -330,6 +342,7 @@ function DateRangePicker() {
         setActiveDateRange(newDateRange);
     }
     function apply() {
+        console.log("Apply", activeDateRange);
         setPopoverActive(false);
     }
     function cancel() {
