@@ -5,7 +5,7 @@ import { AppProvider } from "@shopify/shopify-app-remix/react";
 import { NavMenu } from "@shopify/app-bridge-react";
 import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
 import { authenticate } from "../shopify.server";
-
+// import Nav from "../components/navigation/Nav";
 
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
@@ -20,15 +20,18 @@ export default function App() {
   const { apiKey } = useLoaderData();
 
   return (
-    <AppProvider isEmbeddedApp apiKey={apiKey}>
-      <NavMenu>
-        <Link to="/app" rel="home">
-          Home
-        </Link>
-        <Link to="/app/additional">Additional page</Link>
-      </NavMenu>
-      <Outlet />
-    </AppProvider>
+    <>
+   
+      <AppProvider isEmbeddedApp apiKey={apiKey}>
+      {/* <Nav /> */}
+        <NavMenu>
+          <Link to="/app" rel="home">
+            Home
+          </Link>
+        </NavMenu>
+        <Outlet />
+      </AppProvider>
+    </>
   );
 }
 

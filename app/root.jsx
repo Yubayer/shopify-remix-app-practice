@@ -7,8 +7,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-
-import Nav from "./components/navigation/nav";
+import Nav from "./components/navigation/Nav";
 
 export default function App() {
   return (
@@ -28,7 +27,6 @@ export default function App() {
       <body>
         <Nav />
         <Outlet />
-
         <ScrollRestoration />
         <Scripts />
       </body>

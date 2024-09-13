@@ -1,5 +1,7 @@
 
+import { json } from "@remix-run/node";
 import { authenticate } from "../shopify.server";
+import { Page } from "@shopify/polaris";
 
 export const loader = async ({ request }) => {
     const { admin, session } = await authenticate.admin(request);
@@ -8,11 +10,10 @@ export const loader = async ({ request }) => {
     // });
     // console.log("sstorefront access token: ", sat);
 
-    const sco = await admin.rest.resources.AccessScope.all({
-        session: session,
-    });
+    // const sco = await admin.rest.resources.AccessScope.all({
+    //     session: session,
+    // });
 
-    console.log("access scope: ", sco.data);
 
     // const response = await admin.graphql(
     //     `#graphql
@@ -46,17 +47,14 @@ export const loader = async ({ request }) => {
     // const data = await response.json();
 
 
-    const sft = await admin.rest.resources.StorefrontAccessToken.all({
+    const storefrontAccessToken = await admin.rest.resources.StorefrontAccessToken.all({
         session: session,
     });
 
-    console.log("storefront access token: ", sft.data);
-
-    return null;
+    return json({ storefrontAccessToken });
 }
 
 export const ErrorBoundary = ({ error }) => {
-    console.error("error ----------------------- ", error);
     return (
         <div>
             <h1>Something went wrong</h1>
@@ -66,11 +64,11 @@ export const ErrorBoundary = ({ error }) => {
 
 export default function AppStorefront() {
     return (
-        <div>
-            <h1>App Storefront</h1>
-            <p>
-                This is the App Storefront page.
-            </p>
-        </div>
+        <Page
+            breadcrumbs={[{ content: "Home", url: "/app" }]}
+            title="Storefront Access Token"
+        >
+
+        </Page>
     );
 }

@@ -20,7 +20,7 @@ import { NavLink } from "@remix-run/react";
 export const loader = async ({ request }) => {
   const { admin, session } = await authenticate.admin(request);
 
-  return redirect("/app/products");
+  // return redirect("/app/products");
   return null;
 };
 
@@ -33,9 +33,11 @@ export const action = async ({ request }) => {
 export default function Index() {
 
   return (
-    <Page>
+    <Page
+      breadcrumbs={[{ content: "Home", onAction: () => {} }]}
+      title="Home"
+    >
 
-     Home apge
     </Page>
   );
 }

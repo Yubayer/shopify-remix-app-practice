@@ -1,3 +1,4 @@
+import { Page } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
@@ -8,10 +9,12 @@ export const loader = async ({ request }) => {
 
 export default function PriceRules() {
     return (
-        <div>
-            <h1>Price Rules</h1>
-            
-        </div>
+        <Page
+            breadcrumbs={[{ content: "Home", onAction: () => { } }]}
+            title="Price Rules"
+        >
+
+        </Page>
     );
 }
 
